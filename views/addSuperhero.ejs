@@ -1,0 +1,62 @@
+<!-- sprint 3. tp 3. Etapa 3. Requerimiento 1. -->
+ 
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title> Crear Superhéroe</title>
+    <style> 
+        body { font-family: sans-serif; background-color: #f0f0f0; padding: 20px; }
+         /*(ajuste ancho de ventana) .form-container { display: inline-block; width: auto; max-width: 600px; background: white; padding: 20px; border: 4px double black; border-radius: 8px; margin: 20px;} */
+         .form-container { max-width: 600px; margin: 0 auto; background: white; padding: 20px; border: 1px solid #ccc; } 
+        label { display: block; margin-top: 10px; font-weight: bold; }
+        input[type="text"], input[type="number"], textarea { width: 100%; padding: 8px; margin-top: 5px; border: 1px solid #ddd; box-sizing: border-box; }
+        button { margin-top: 20px; padding: 10px 15px; background-color: #007bff; color: white; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+    
+    <%# sprint 3. tp 3. Etapa 3. Requerimiento 5. %>
+   
+ <div class="form-container">
+  <h2>Agregar Nuevo Superhéroe</h2>
+
+  <form action="/api/heroes" method="POST">
+
+    <label>Nombre del Superhéroe:</label>
+    <input type="text" name="nombreSuperHeroe" required minlength="3" maxlength="60">
+
+    <label>Nombre Real:</label>
+    <input type="text" name="nombreReal" required minlength="3" maxlength="60">
+
+    <label>Edad:</label>
+    <input type="number" name="edad" required min="0">
+
+    <label>Planeta de Origen:</label>
+    <input type="text" name="planetaOrigen" required>
+
+    <label for="debilidad">Debilidad (separados por coma):</label>
+     <textarea id="debilidad" name="debilidad"></textarea>
+
+    <label for="poderes">Poderes (separados por coma):</label>
+    <input type="text" id="poderes" name="poderes" placeholder="Ej: ["volar", "superfuerza", "invisibilidad"]">
+             
+    <label for="aliados">Aliados (separados por coma):</label>
+    <input type="text" id="aliados" name="aliados">
+
+    <label for="enemigos">Enemigos (separados por coma):</label>
+    <input type="text" id="enemigos" name="enemigos">
+
+    <label for="creador"> Creador:</label>
+    <input type="text" id="creador" name="creador" required>
+
+    <button type="submit">Guardar Superhéroe</button>
+
+  </form>
+</div>
+    
+    </form>
+</div>
+</body>
+</html>

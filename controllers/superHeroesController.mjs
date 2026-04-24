@@ -16,6 +16,7 @@ export async function obtenerSuperHeroePorIdController(req, res) {
         return res.status(500).send ({ mensaje: 'Error al obtener el superhéroe', error: error.message });
     }
 }
+/*
 export async function obtenerTodosLosSuperHeroesController(req, res) {
     try {
         const superheroes = await obtenerTodosLosSuperHeroes();
@@ -25,6 +26,19 @@ export async function obtenerTodosLosSuperHeroesController(req, res) {
         return res.status(500).send({ mensaje: 'Error al obtener los superhéroes', error: error.message });
     }
 }
+*/
+ //sprint 3 tp 3. Etapa 2. Requerimiento 3. 
+export async function obtenerTodosLosSuperHeroesController(req, res) {
+    try {
+        const superheroes = await obtenerTodosLosSuperHeroes();
+         console.log(`Cargando dashboard con ${superheroes.length} héroes`);
+        // Cambie .json X .render para cargar la vista y renderizar dashbord.
+        res.render('dashboard', { heroes: superheroes }); 
+    } catch (error) {
+        res.status(500).send({ mensaje: 'Error al cargar el dashboard', error: error.message });
+    }
+}
+   
 
 export async function buscarSuperheroesPorAtributoController(req, res) {
     try {
@@ -118,3 +132,24 @@ export async function eliminarSuperHeroexNombreController(req, res) {
     res.status(500).send({mensaje: "Error al eliminar el superhéroe", error: error.message,});
   }
 }
+//¿¿¿???
+//¿¿¿???sprint 3. tp 3. Etapa 3. Requerimiento 2 continua en routes.
+export async function rutaParaFormularioVistaAddController(req, res) {
+    try {     
+        res.render('addSuperhero');        
+    } catch (error) {
+        res.status(500).send({ mensaje: 'Error al crear el Super Héroe', error: error.message });
+    }    
+} 
+//sprint 3. tp 3. Etapa 3. Requerimiento 3.
+export async function AgregarSuperHeroeController(req, res) {
+  try {
+     console.log("estoy en la función controlador, agregar para crear.");
+    const nuevoSuperheroe = req.body;
+    const superheroeCreado = await crearSuperHeroe(nuevoSuperheroe);
+     res.redirect('/heroes');
+      } catch (error) {
+        res.status(500).render('addSuperheroe', {error:'Error al crear el superhéroe.'});
+      }
+    };
+    
