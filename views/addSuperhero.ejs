@@ -22,7 +22,7 @@
  <div class="form-container">
   <h2>Agregar Nuevo Superhéroe</h2>
 
-  <form action="/api/heroes" method="POST">
+  <form action="/api/heroes/agregar" method="POST">
 
     <label>Nombre del Superhéroe:</label>
     <input type="text" name="nombreSuperHeroe" required minlength="3" maxlength="60">
@@ -40,8 +40,10 @@
      <textarea id="debilidad" name="debilidad"></textarea>
 
     <label for="poderes">Poderes (separados por coma):</label>
-    <input type="text" id="poderes" name="poderes" placeholder="Ej: ["volar", "superfuerza", "invisibilidad"]">
-             
+    <input type="text" id="poderes" name="poderes" placeholder="Ej: volar, superfuerza, invisibilidad">
+                                                                    
+
+    
     <label for="aliados">Aliados (separados por coma):</label>
     <input type="text" id="aliados" name="aliados">
 
@@ -52,11 +54,8 @@
     <input type="text" id="creador" name="creador" required>
 
     <button type="submit">Guardar Superhéroe</button>
-
-  </form>
-</div>
     
-    </form>
+ </form>
 </div>
 </body>
 </html>
