@@ -9,43 +9,47 @@
 
  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<style>
- body {
-    font-family: sans-serif;
-    background-color: #f0f0f0; 
- }
- .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
- }
- .hero-card {
-    border: 1px solid #ccc;
-    padding: 15px;
-    margin-bottom: 20px;
-    background-color: white;
- }
- .hero-actions a, .hero-actions button {
-    padding: 8px 12px;
-    margin-right: 5px;
-    cursor: pointer;
- }
- .add-button {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    padding: 10px;
-    background-color: #33ff00;
-    color: rgb(255, 255, 255);
-    text-decoration: none;
-    border: 4px double black;
-    border-radius: 7px;
- }
- h1 {
-    color: #333;
-    margin-bottom: 30px;
- }
-</style>
+        <style>
+                body {
+                    font-family: sans-serif;
+                    background-color: #f0f0f0; 
+                }
+                .container {
+                    max-width: 1200px;
+                    margin: 0 auto;
+                    padding: 20px;
+                }
+                .hero-card {
+                    border: 1px solid #ccc;
+                    padding: 15px;
+                    margin-bottom: 20px;
+                    background-color: white;
+                }
+                .hero-actions a, .hero-actions button {
+                    padding: 8px 12px;
+                    margin-right: 5px;
+                    cursor: pointer;
+                }
+                .add-button {
+                    position: fixed;
+                    top: 20px;
+                    left: 20px;
+                    padding: 10px 14px;
+                    background-color: #39ff14;   
+                    color: #0b3d0b;              
+                    border: 4px double #0b3d0b; 
+                    border-radius: 7px;
+                    text-decoration: none;
+                    font-weight: bold;
+                    transition: all 0.3s ease;
+                }
+                /* Hover (interacción) */
+                .add-button:hover {
+                    background-color: #0b3d0b;  
+                    color: #ffffff;            
+                    transform: scale(1.05);     
+                }
+        </style>
 </head>
 
 <body>
@@ -81,7 +85,9 @@
         <p><strong>Planeta de origen:</strong> <%= hero.planetaOrigen %></p>
         <p><strong>Poderes:</strong> <%= hero.poderes %></p>
         <p><strong>Debilidad:</strong> <%= hero.debilidad %></p>
-
+        <p><strong>Aliados:</strong> <%= hero.aliados %></p>
+        <p><strong>Enemigos:</strong> <%= hero.enemigos %></p>
+        <p><strong>Creador:</strong> <%= hero.creador %></p>
         <!--   VER MÁS  - genera conflicto en routes- comentado el endpoint en routes-
 
         <a href="/api/heroes/<%= hero._id %>">Ver más</a>
@@ -89,7 +95,7 @@
         <div class="hero-actions" style="margin-top: 10px;"> -->
 
             <!-- Sprint 3. tp 3. Etapa 4. Requerimiento 5: BOTÓN EDITAR  -->
-            <a href="/api/heroes/<%= hero._id %>/editar"
+            <a href="/api/heroes/editar/<%= hero._id %>"
                style="background-color: #007bff; color: white; border: none; 
                       padding: 8px 12px; cursor: pointer; text-decoration: none; 
                       border-radius:4px;">

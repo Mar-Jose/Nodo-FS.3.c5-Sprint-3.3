@@ -11,7 +11,23 @@
         .form-container { max-width: 600px; margin: 0 auto; background: white; padding: 20px; border: 1px solid #ccc; }
         label { display: block; margin-top: 10px; font-weight: bold; }
         input[type="text"], input[type="number"], textarea { width: 100%; padding: 8px; margin-top: 5px; border: 1px solid #ddd; box-sizing: border-box; }
-        button { margin-top: 20px; padding: 10px 15px; background-color: #007bff; color: white; border: none; cursor: pointer; }
+        .boton-guardar {
+            margin-top: 20px;
+            padding: 10px 15px;
+            background-color: #d0ebff;  
+            color: #003366;             
+            border: 3px double #003366;  
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .boton-guardar:hover {
+            background-color: #003366;   
+            color: white;
+            transform: scale(1.05);
+        }
         .error-message { color: red; margin-top: 5px; }
     </style>
     </head>
@@ -30,9 +46,8 @@
                     </ul>
                 </div>
             <% } %>
-        <!-- <%#  siguiente ruta es la que tenia en la cohorte anterior con el endpoint ultimo de routes
-         <form action="/api/heroes/actualizar/<%= heroe._id %>?_method=PUT" method="POST">  %> -->
-        <form action="/api/heroes/<%= heroe._id %>/editar?_method=PUT" method="POST">
+      
+        <form action="/api/heroes/editar/<%= heroe._id %>?_method=PUT" method="POST">
     
             <label for="nombreSuperHeroe">Nombre del Superhéroe:</label>
             <input type="text" 
@@ -94,7 +109,30 @@
                    name="enemigos"
                    value="<%= heroe.enemigos ? (Array.isArray(heroe.enemigos) ? heroe.enemigos.join(', ') : heroe.enemigos) : '' %>">
 
-            <button type="submit">Guardar Cambios</button>
+    <%# sprint 3. tp 3. Etapa 3. Requerimiento 6 %>
+           <button type="submit"
+                style="
+                    margin-top: 20px;
+                    padding: 8px 12px;
+                    background-color: #d0ebff;   
+                    color: #003366;              
+                    border: 2px solid #003366;   
+                    border-radius: 5px;
+                    font-weight: bold;
+                    cursor: pointer;
+                    transition: 0.3s;
+                "
+                onmouseover="
+                    this.style.backgroundColor='#003366';
+                    this.style.color='white';
+                "
+                onmouseout="
+                    this.style.backgroundColor='#d0ebff';
+                    this.style.color='#003366';
+                "
+                >
+                Guardar Cambios
+            </button>
             <a href="/api/heroes" style="margin-left: 15px;">Cancelar</a>
 
         </form>

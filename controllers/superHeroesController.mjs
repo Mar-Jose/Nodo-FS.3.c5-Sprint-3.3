@@ -218,6 +218,7 @@ export async function AgregarSuperHeroeController(req, res, next) {
     
     if (!errors.isEmpty()) {
       const heroe = await obtenerSuperHeroePorId(id);
+      console.log(heroe)
       return res.status(400).render('editSuperhero', {
                 heroe,
                 errores: errors.array(),

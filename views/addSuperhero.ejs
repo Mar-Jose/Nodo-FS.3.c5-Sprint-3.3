@@ -53,9 +53,49 @@
     <label for="creador"> Creador:</label>
     <input type="text" id="creador" name="creador" required>
 
-    <button type="submit">Guardar Superhéroe</button>
-    
-    <a href="/api/heroes" style="margin-left: 15px;">Volver</a>    
+      <%# sprint 3. tp 3. Etapa 3. Requerimiento 6: <button type="submit">Guardar Superhéroe</button> %>
+
+   <button type="submit"
+   style="
+      margin-top: 20px;
+      padding: 8px 12px;
+      background-color: #dbeecb;   
+      color: #2f4f2f;              
+      border: 2px solid #2f4f2f;   
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+   "
+   onmouseover="
+      this.style.backgroundColor='#2f4f2f';
+      this.style.color='white';
+   "
+   onmouseout="
+      this.style.backgroundColor='#dbeecb';
+      this.style.color='#2f4f2f';
+   "
+>
+   Guardar Superhéroe
+</button>
+
+   <a href="/api/heroes" 
+   style="
+      margin-left: 15px;
+      padding: 8px 12px;
+      background-color: #ffe6f0;
+      color: #800020;
+      border: 2px solid #800020;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+   "
+   onmouseover="this.style.backgroundColor='#800020'; this.style.color='white';"
+   onmouseout="this.style.backgroundColor='#ffe6f0'; this.style.color='#800020';"
+>
+   Volver
+</a>   
  </form>
 </div>
 </body>
