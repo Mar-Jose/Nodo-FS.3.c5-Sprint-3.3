@@ -29,7 +29,7 @@ connectDB();
 app.use('/api', superHeroRoutes);
 
 // Manejo de errores para rutas no encontradas:
-
+/*
  app.use((req, res) => {
    const mensaje = 'Ruta no encontrada';
     if (req.accepts('html')) {
@@ -59,6 +59,7 @@ app.use('/api', superHeroRoutes);
      });
  });
 
+*/
 
 // Iniciar el servidor:
 app.listen(PORT, () => {

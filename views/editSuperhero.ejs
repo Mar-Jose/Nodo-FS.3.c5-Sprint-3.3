@@ -108,6 +108,14 @@
                    id="enemigos" 
                    name="enemigos"
                    value="<%= heroe.enemigos ? (Array.isArray(heroe.enemigos) ? heroe.enemigos.join(', ') : heroe.enemigos) : '' %>">
+          >
+
+            <label for="creador">Creador:</label>
+            <input type="text" 
+                   id="creador" 
+                   name="creador" 
+                   required value="<%= typeof heroe.creador !== 'undefined' ? heroe.creador : '' %>">
+            
 
     <%# sprint 3. tp 3. Etapa 3. Requerimiento 6 %>
            <button type="submit"

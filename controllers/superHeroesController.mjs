@@ -156,11 +156,12 @@ export async function rutaParaFormularioVistaAddController(req, res) {
 */
 
 export async function AgregarSuperHeroeController(req, res, next) {
-    const errors = validationResult(req);
+    // Si el middleware 'validate' guardó errores para vista, úsalos
+    const erroresValidacion = req.validationErrors || [];
 
-    if (!errors.isEmpty()) {
+    if (erroresValidacion.length > 0) {
         return res.status(400).render('addSuperhero', {
-            errores: errors.array()
+            errores: erroresValidacion
         });
     }
 
@@ -214,18 +215,30 @@ export async function AgregarSuperHeroeController(req, res, next) {
   console.log("estoy en la capa controllers, f:actualizar-vista");
     const { id } = req.params;
     const datosSuperheroe = req.body;
-    const errors = validationResult(req);
     
-    if (!errors.isEmpty()) {
+    // Si el middleware 'validate' guardó errores para vista, úsalos
+    const erroresValidacion = req.validationErrors || [];
+    
+    if (erroresValidacion.length > 0) {
       const heroe = await obtenerSuperHeroePorId(id);
-      console.log(heroe)
       return res.status(400).render('editSuperhero', {
                 heroe,
-                errores: errors.array(),
+                errores: erroresValidacion,
             });
         }
 
     try {
+        // Procesar arrays: convertir strings separados por coma en arrays
+        if (datosSuperheroe.poderes) {
+            datosSuperheroe.poderes = datosSuperheroe.poderes.split(',').map(p => p.trim());
+        }
+        if (datosSuperheroe.aliados) {
+            datosSuperheroe.aliados = datosSuperheroe.aliados.split(',').map(a => a.trim());
+        }
+        if (datosSuperheroe.enemigos) {
+            datosSuperheroe.enemigos = datosSuperheroe.enemigos.split(',').map(e => e.trim());
+        }
+
         const superheroeActualizado = await actualizarSuperHeroe(id, datosSuperheroe);
         
         if (!superheroeActualizado) {
