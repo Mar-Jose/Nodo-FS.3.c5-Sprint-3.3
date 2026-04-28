@@ -6,10 +6,9 @@ import { body, param } from 'express-validator';
 
 export const superheroeValidations = [
   body('nombreSuperHeroe')
+    .trim()
     .notEmpty()
     .withMessage('El nombre de superhéroe es requerido')
-    .escape()
-    .trim()
     .isLength({ min: 3, max: 60 })
     .withMessage('El nombre de superhéroe debe tener entre 3 y 60 caracteres'),
    
@@ -26,11 +25,11 @@ export const superheroeValidations = [
     //  Sprint 3. tp 2. Requerimiento 3:
     
   body('edad')
-    .notEmpty()
-    .escape()
-    .isNumeric()
-    .withMessage('La edad del superheroe es requerida')
     .trim()
+    .notEmpty()
+    .withMessage('La edad del superheroe es requerida')
+    .isNumeric()
+    .withMessage('La edad debe ser un número')
     .isInt({ min: 0 })
     .withMessage('La edad del superheroe debe ser un número entero positivo, escribala por favor'),
 
@@ -80,10 +79,9 @@ export const superheroeValidations = [
 //  Sprint 3. tp 3:
 
     body('creador')
-        .notEmpty()
-        .escape()
-        .withMessage('El nombre creador siempre es requerido')
         .trim()
+        .notEmpty()
+        .withMessage('El nombre creador siempre es requerido')
         .isLength({ min: 3, max: 60 })
         .withMessage('El nombre del creador del superheroe es necesario ya que debe ser un genio y quiero conocerlo el mismo deberá tener entre 3 y 60 caracteres'),
 

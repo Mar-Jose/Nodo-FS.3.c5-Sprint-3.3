@@ -160,6 +160,7 @@ export async function AgregarSuperHeroeController(req, res, next) {
     const erroresValidacion = req.validationErrors || [];
 
     if (erroresValidacion.length > 0) {
+        console.log("❌ Errores de validación:", erroresValidacion);
         return res.status(400).render('addSuperhero', {
             errores: erroresValidacion
         });
@@ -167,6 +168,7 @@ export async function AgregarSuperHeroeController(req, res, next) {
 
     try {
         const datos = req.body;
+        console.log("✅ Datos recibidos en controlador:", datos);
 
         if (datos.poderes) {
             datos.poderes = datos.poderes.split(',').map(p => p.trim());
@@ -178,11 +180,14 @@ export async function AgregarSuperHeroeController(req, res, next) {
             datos.enemigos = datos.enemigos.split(',').map(e => e.trim());
         }
 
-        await crearSuperHeroe(datos);
+        console.log("📝 Datos procesados antes de guardar:", datos);
+        const resultado = await crearSuperHeroe(datos);
+        console.log("✅ Superhéroe guardado con ID:", resultado._id);
 
         return res.redirect('/api/heroes');
 
     } catch (error) {
+        console.error("💥 Error al crear superhéroe:", error.message);
         next(error); 
     }
 }
